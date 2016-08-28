@@ -3910,7 +3910,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     @Override
     public void onChunkUnloaded(FullChunk chunk) {
-        this.unloadChunk(chunk.getX(), chunk.getZ(), chunk.getProvider().getLevel());
+        //this.unloadChunk(chunk.getX(), chunk.getZ(), chunk.getProvider().getLevel());
     }
 
     @Override
