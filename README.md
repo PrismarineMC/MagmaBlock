@@ -1,4 +1,4 @@
-MagmaBlock
+MagmaBlock [![CircleCI](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master.svg?style=svg)](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master)
 ===================
 
 __Feature-rich server software for Minecraft: Pocket Edition__
@@ -20,7 +20,7 @@ If you have an issue, please write it to us, we will help you or fix the bug.
 
 Get Prismarine
 -------------
-<!--* Jar: [Download](http://193.124.185.24/get_prismarine.php)-->
+* JAR(Login required): [![CircleCI](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master.svg?style=svg)](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master)
 * Source: [Download](https://github.com/PrismarineMC//archive/master.zip)
 
 NOTE: **The master branch is the only officially supported branch.**
