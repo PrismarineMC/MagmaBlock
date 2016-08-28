@@ -6,7 +6,7 @@ __Feature-rich server software for Minecraft: Pocket Edition__
 Introduction
 -------------
 MagmaBlock is a fork of **[Nukkit](https://github.com/Nukkit/Nukkit)** and most of the original code was written by **Nukkit Team**.<br>
-Some of the extended functionality that Jarmarine offers:
+Some of the extended functionality that MagmaBlock offers:
 
 * Synapse Client support
 * More stable than Nukkit
