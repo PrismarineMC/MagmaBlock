@@ -693,6 +693,7 @@ public class Level implements ChunkManager, Metadatable {
             Entity entity = this.updateEntities.get(id);
             if (entity == null) {
                 this.updateEntities.remove(id);
+                continue;
             }
             if (entity.closed || !entity.onUpdate(currentTick)) {
                 this.updateEntities.remove(id);
