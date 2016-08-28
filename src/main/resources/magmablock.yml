@@ -1,0 +1,21 @@
+#MagmaBlock advanced config
+
+server:
+  #Period of automaticly garbation collector. 20=1sec. Default=30min
+  gc-period: 36000
+
+synapse:
+  #Enable synapse client
+  enable: false
+  #IP of Synapse server
+  server-ip: 127.0.0.1
+  #Port or Synapse server
+  port: 10305
+  #Description is identifier for client
+  description: "A Synapse client"
+  #Is that server main or lobby?
+  is-main-server: true
+  #16-bit long password to connect Synapse
+  password: 16bitlongkey
+  #Disable RakNet means players can join only via Synapse
+  disable-rak: false
