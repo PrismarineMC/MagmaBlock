@@ -691,6 +691,9 @@ public class Level implements ChunkManager, Metadatable {
         this.timings.entityTick.startTiming();
         for (long id : new ArrayList<>(this.updateEntities.keySet())) {
             Entity entity = this.updateEntities.get(id);
+            if (entity == null) {
+                this.updateEntities.remove(id);
+            }
             if (entity.closed || !entity.onUpdate(currentTick)) {
                 this.updateEntities.remove(id);
             }
