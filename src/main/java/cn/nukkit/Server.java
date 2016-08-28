@@ -20,6 +20,7 @@ import cn.nukkit.event.server.QueryRegenerateEvent;
 import cn.nukkit.inventory.*;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.enchantment.Enchantment;
+import cn.nukkit.inventory.WindowInventory;
 import cn.nukkit.lang.BaseLang;
 import cn.nukkit.lang.TextContainer;
 import cn.nukkit.lang.TranslationContainer;
@@ -1919,6 +1920,18 @@ public class Server {
 
         return result;
 
+    }
+
+    public WindowInventory createInventory(Player player){
+        return this.createInventory(player, 27, "");
+    }
+
+    public WindowInventory createInventory(Player player, int size){
+        return this.createInventory(player, size, "");
+    }
+
+    public WindowInventory createInventory(Player player, int size, String name){
+        return new WindowInventory(player, size, name);
     }
 
     private void registerEntities() {
