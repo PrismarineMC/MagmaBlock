@@ -106,7 +106,7 @@ public class WindowInventory extends CustomInventory{
             .putInt("x", (int) holder.x)
             .putInt("y", (int) holder.y)
             .putInt("z", (int) holder.z);
-        if(this.name != ""){
+        if(this.customName != ""){
             c.putString("CustomName", this.customName);
         }
 		try{
