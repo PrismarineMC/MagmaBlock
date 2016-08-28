@@ -1,2 +1,3 @@
 target
 *.class
+hs_err*.log
