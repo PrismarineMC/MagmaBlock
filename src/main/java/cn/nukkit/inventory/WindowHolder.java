@@ -30,6 +30,7 @@ public class WindowHolder extends Vector3 implements InventoryHolder{
         this.inventory = inventory;
     }
 
+    @Override
     public Inventory getInventory(){
         return this.inventory;
     }

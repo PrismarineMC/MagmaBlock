@@ -94,6 +94,7 @@ public class WindowInventory extends CustomInventory{
         this.customName = name;
     }
 
+    @Override
     public void onOpen(Player who){
         this.holder = new WindowHolder(who.getFloorX(), who.getFloorY() - 3, who.getFloorZ(), this);
         WindowHolder holder = (WindowHolder) this.holder;
@@ -120,6 +121,7 @@ public class WindowInventory extends CustomInventory{
         this.sendContents(who);
     }
 
+    @Override
     public void onClose(Player who){
         WindowHolder holder = (WindowHolder) this.holder;
         UpdateBlockPacket pk = new UpdateBlockPacket();
