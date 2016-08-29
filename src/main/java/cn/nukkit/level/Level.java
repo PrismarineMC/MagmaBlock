@@ -772,13 +772,15 @@ public class Level implements ChunkManager, Metadatable {
         }
         this.playerMoveToSend = new HashMap<>();
 
-        for (String key : this.chunkPackets.keySet()) {
+        for (Iterator<String> it = this.chunkPackets.keySet().iterator(); it.hasNext(); ) {
+            String key = it.next();
             Chunk.Entry chunkEntry = Level.getChunkXZ(key);
             int chunkX = chunkEntry.chunkX;
             int chunkZ = chunkEntry.chunkZ;
             Player[] chunkPlayers = this.getChunkPlayers(chunkX, chunkZ).values().stream().toArray(Player[]::new);
             if (chunkPlayers.length > 0) {
-                for (DataPacket pk : this.chunkPackets.get(key)) {
+                for (Iterator<DataPacket> itr = this.chunkPackets.get(key).iterator(); itr.hasNext(); ) {
+                    DataPacket pk = itr.next();
                     Server.broadcastPacket(chunkPlayers, pk);
                 }
             }
