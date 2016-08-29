@@ -763,7 +763,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
     public void loadChunk(int x, int z, Level level) {
         level = level == null ? this.level : level;
         String index = Level.chunkHash(x, z);
-        if (!this.usedChunks.containsKey(index)) {
+        if (!this.usedChunks.containsKey(index) && !this.loadQueue.containsKey(index)) {
             this.loadQueue.put(index, Math.abs(((int) this.x >> 4) - x) + Math.abs(((int) this.z >> 4) - z));
             for (Entity entity : level.getChunkEntities(x, z).values()) {
                 if (entity != this) {
@@ -1379,6 +1379,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         }
 
         this.loadChunk((int) this.x >> 4, (int) this.z >> 4);
+        this.loadChunk(((int) this.x >> 4) - 1, (int) this.z >> 4); //Load near chunks
+        this.loadChunk(((int) this.x >> 4) + 1, (int) this.z >> 4);
+        this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) - 1);
+        this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) + 1);
 
         this.newPosition = null;
     }
@@ -3815,6 +3819,10 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             this.newPosition = null;
 
             this.loadChunk((int) to.x >> 4, (int) to.z >> 4);
+            this.loadChunk(((int) to.x >> 4) - 1, (int) to.z >> 4); //Load near chunks
+            this.loadChunk(((int) to.x >> 4) + 1, (int) to.z >> 4);
+            this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) - 1);
+            this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) + 1);
 
             //Weather
             this.getLevel().sendWeather(this);
