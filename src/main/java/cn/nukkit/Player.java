@@ -756,6 +756,23 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.getFoodData().sendFoodLevel();
     }
 
+    public void loadChunk(int x, int z) {
+        this.loadChunk(x, z, null);
+    }
+
+    public void loadChunk(int x, int z, Level level) {
+        level = level == null ? this.level : level;
+        String index = Level.chunkHash(x, z);
+        if (!this.usedChunks.containsKey(index)) {
+            this.loadQueue.put(index, Math.abs(((int) this.x >> 4) - x) + Math.abs(((int) this.z >> 4) - z));
+            for (Entity entity : level.getChunkEntities(x, z).values()) {
+                if (entity != this) {
+                    entity.spawnTo(this);
+                }
+            }
+        }
+    }
+
     protected boolean orderChunks() {
         if (!this.connected) {
             return false;
@@ -1360,6 +1377,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         if(!this.level.isChunkLoaded((int)this.x, (int)this.z)){
             this.level.loadChunk((int)this.x, (int)this.z);
         }
+
+        this.loadChunk((int) this.x >> 4, (int) this.z >> 4);
 
         this.newPosition = null;
     }
@@ -3794,6 +3813,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             this.resetFallDistance();
             this.nextChunkOrderRun = 0;
             this.newPosition = null;
+
+            this.loadChunk((int) to.x >> 4, (int) to.z >> 4);
 
             //Weather
             this.getLevel().sendWeather(this);
