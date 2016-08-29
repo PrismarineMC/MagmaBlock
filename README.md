@@ -1,4 +1,4 @@
-MagmaBlock [![CircleCI](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master.svg?style=svg)](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master)
+![MagmaBlock](https://hydra-media.cursecdn.com/minecraft-ru.gamepedia.com/c/c6/%D0%9C%D0%B0%D0%B3%D0%BC%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B1%D0%BB%D0%BE%D0%BA.gif?version=cc9ef2b86b495ba0084ec6ec1a2a38ec) MagmaBlock [![CircleCI](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master.svg?style=svg)](https://circleci.com/gh/PrismarineMC/MagmaBlock/tree/master)
 ===================
 
 __Feature-rich server software for Minecraft: Pocket Edition__
