@@ -67,14 +67,14 @@ level-settings:
 
 chunk-sending:
  #Cantidad de paquetes que se envián al jugador por tick
- per-tick: 4
+ per-tick: 1
  #Cantidad de paquetes enviados alrededor del jugador
- max-chunks: 192
+ max-chunks: 32
  #Cantidad de paquetes que necesitan ser enviados antes de que aparezca el jugador
- spawn-threshold: 56
+ spawn-threshold: 28
  #Guardar una copia serializada del chunk en la memoria para acelerar el envío
  #Útil en mundos mayormente estáticos donde muchos jugadores se unen al mismo tiempo
- cache-chunks: false
+ cache-chunks: true
 
 chunk-ticking:
  #Máxima cantidad de paquetes procesados por tick

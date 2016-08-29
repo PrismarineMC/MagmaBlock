@@ -67,14 +67,14 @@ level-settings:
 chunk-sending:
  #区块发送设置
  #单位时间（tick）内发送给玩家区块的数量
- per-tick: 4
+ per-tick: 1
  #玩家附近发送的区块数量
- max-chunks: 192
+ max-chunks: 32
  #玩家完成进服需要的区块数量
- spawn-threshold: 56
+ spawn-threshold: 28
  #使用区块缓存
  #缓解多玩家同时加入时的服务器压力
- cache-chunks: false
+ cache-chunks: true
 
 chunk-ticking:
  #区块处理设置

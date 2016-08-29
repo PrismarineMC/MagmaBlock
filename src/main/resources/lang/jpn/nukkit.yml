@@ -67,14 +67,14 @@ level-settings:
 
 chunk-sending:
  #チックあたりのプレイヤーに送られるチャンクの量
- per-tick: 4
+ per-tick: 1
  #各プレイヤーの周囲に送られるチャンクの量
- max-chunks: 192
+ max-chunks: 32
  #プレーヤーがスポーンする前に送信する必要があるチャンクの量
- spawn-threshold: 56
+ spawn-threshold: 28
  #より速く送信するために、メモリ内にチャンクのシリアル化されたコピーを保存します
  #プレイヤーがたくさんが同時に参加し、主にあまりブロックを設置したり壊したりしないワールドに効果ありです。
- cache-chunks: false
+ cache-chunks: true
 
 chunk-ticking:
  #各チックで処理する最大のチャンク量
