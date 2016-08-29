@@ -1828,7 +1828,7 @@ public class Level implements ChunkManager, Metadatable {
             }
         }
 
-        this.addSound(new BlockPlaceSound(block));
+        this.addSound(new BlockPlaceSound(hand));
 
         if (!hand.place(item, block, target, face, fx, fy, fz, player)) {
             return null;

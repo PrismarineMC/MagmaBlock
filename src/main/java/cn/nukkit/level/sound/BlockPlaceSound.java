@@ -6,11 +6,11 @@ import cn.nukkit.network.protocol.LevelEventPacket;
 
 public class BlockPlaceSound extends GenericSound {
 
-    protected int data;
+    protected int block;
 
     public BlockPlaceSound(Block bl) {
         super(bl, LevelEventPacket.EVENT_SOUND_BLOCK_PLACE, 0);
-        this.data = bl.getId();
+        this.block = bl.getId();
     }
 
     @Override 
@@ -20,7 +20,7 @@ public class BlockPlaceSound extends GenericSound {
         pk.x = (float) this.x; 
         pk.y = (float) this.y; 
         pk.z = (float) this.z; 
-        pk.data = (int) this.data; 
+        pk.data = (int) this.block; 
         return new DataPacket[]{pk}; 
     }
 }
