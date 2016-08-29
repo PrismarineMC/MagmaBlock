@@ -236,7 +236,7 @@ public class SynapseAPI {
     public void tick(){
         this.synapseInterface.process();
         long time = System.currentTimeMillis();
-        if((time - this.lastUpdate) >= 5000){//Heartbeat!
+        if((time - this.lastUpdate) >= 1000){//Heartbeat!
             this.lastUpdate = time;
             HeartbeatPacket pk = new HeartbeatPacket();
             pk.tps = this.getServer().getTicksPerSecondAverage();
@@ -246,10 +246,10 @@ public class SynapseAPI {
         }
 
         time = System.currentTimeMillis();
-        if(((time - this.lastUpdate) >= 30000) && this.synapseInterface.isConnected()){  //30 seconds timeout
+        if(((time - this.lastUpdate) >= 15000) && this.synapseInterface.isConnected()){  //15 seconds timeout
             this.synapseInterface.reconnect();
         }
-        if(time - this.connectionTime >= 15000 && !this.verified){
+        if(time - this.connectionTime >= 10000 && !this.verified){
             this.synapseInterface.reconnect();
         }
     }
