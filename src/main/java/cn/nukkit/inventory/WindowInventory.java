@@ -24,6 +24,7 @@ import cn.nukkit.Player;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.network.protocol.UpdateBlockPacket;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.network.protocol.BlockEntityDataPacket;
@@ -102,6 +103,7 @@ public class WindowInventory extends CustomInventory{
         pk.records = new UpdateBlockPacket.Entry[]{new UpdateBlockPacket.Entry((int)holder.x, (int)holder.y, (int)holder.z, this.block, 0, UpdateBlockPacket.FLAG_ALL)};
         who.dataPacket(pk);
         CompoundTag c = new CompoundTag("")
+            .putList(new ListTag<>("Items"))
             .putString("id", this.tile)
             .putInt("x", (int) holder.x)
             .putInt("y", (int) holder.y)
@@ -116,7 +118,9 @@ public class WindowInventory extends CustomInventory{
             pk1.z = (int) holder.z;
             pk1.namedTag = NBTIO.write(c);
             who.dataPacket(pk1);
-		} catch(Exception e){}
+		} catch(Exception e){
+            who.getServer().getLogger().logException(e);
+        }
         super.onOpen(who);
         this.sendContents(who);
     }

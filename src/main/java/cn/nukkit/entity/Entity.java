@@ -903,6 +903,9 @@ public abstract class Entity extends Location implements Metadatable {
 
             this.addMotion(this.motionX, this.motionY, this.motionZ);
         }
+        if(!this.level.isChunkLoaded((int)this.x, (int)this.z)){
+            this.level.loadChunk((int)this.x, (int)this.z);
+        }
     }
 
     public void addMovement(double x, double y, double z, double yaw, double pitch, double headYaw) {
@@ -1459,6 +1462,10 @@ public abstract class Entity extends Location implements Metadatable {
         this.ySize = 0;
 
         this.setMotion(this.temporalVector.setComponents(0, 0, 0));
+
+        if(!this.level.isChunkLoaded((int)to.x, (int)to.z)){
+            this.level.loadChunk((int)to.x, (int)to.z);
+        }
 
         if (this.setPositionAndRotation(to, yaw, pitch)) {
             this.resetFallDistance();
