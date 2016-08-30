@@ -2635,7 +2635,8 @@ public class Level implements ChunkManager, Metadatable {
             be.close();
         }
 
-        for (Map.Entry<String, BaseFullChunk> entry : this.chunks.entrySet()) {
+        for (Iterator<Map.Entry<String, BaseFullChunk>> it = this.chunks.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<String, BaseFullChunk> entry = it.next();
 
             String index = entry.getKey();
             BaseFullChunk chunk = entry.getValue();
