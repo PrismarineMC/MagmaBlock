@@ -52,7 +52,7 @@ public class SynapsePlayer extends Player {
         if (!ev.isCancelled()) {
             LoginPacket pk = (LoginPacket)SynapseAPI.getInstance().getPacket(packet.cachedLoginPacket);
             pk.decode();
-            pk.protocol = ProtocolInfo.CURRENT_PROTOCOL;
+            //pk.protocol = ProtocolInfo.CURRENT_PROTOCOL;
             this.handleDataPacket(pk);
         }
     }
