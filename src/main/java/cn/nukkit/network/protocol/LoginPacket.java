@@ -39,7 +39,17 @@ public class LoginPacket extends DataPacket {
         this.protocol = this.getInt();
         byte[] str;
         try {
-            str = Zlib.inflate(this.get(this.getInt()), 1024 * 1024 * 64);
+            switch(this.protocol){
+                case 81:
+                case 82:
+                    str = Zlib.inflate(this.get(this.getInt()), 1024 * 1024 * 64);
+                    break;
+                case 90:
+                    str = Zlib.inflate(this.get(this.getShort()), 1024 * 1024 * 64);
+                    break;
+                default: //Not accepted protocol, skipping
+                    return;
+            }
         } catch (Exception e) {
             return;
         }
