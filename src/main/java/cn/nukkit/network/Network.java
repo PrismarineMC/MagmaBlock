@@ -125,7 +125,15 @@ public class Network {
     public void processBatch(BatchPacket packet, Player player) {
         byte[] data;
         try {
-            data = Zlib.inflate(packet.payload, 64 * 1024 * 1024);
+            if(player.getProtocol() >= 90){
+                NewBatchPacket pk = new NewBatchPacket();
+                packet.encode();
+                pk.setBuffer(packet.getBuffer(), 1);
+                pk.decode();
+                data = Zlib.inflate(pk.payload, 64 * 1024 * 1024);
+            } else {
+                data = Zlib.inflate(packet.payload, 64 * 1024 * 1024);
+            }
         } catch (Exception e) {
             Server.getInstance().getLogger().logException(e);
             return;

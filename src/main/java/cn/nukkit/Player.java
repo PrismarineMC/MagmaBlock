@@ -189,6 +189,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
     private int hash;
 
+    protected int protocol = ProtocolInfo.CURRENT_PROTOCOL;
+
+    public int getProtocol(){
+        return protocol;
+    }
+
     public TranslationContainer getLeaveMessage() {
         return new TranslationContainer(TextFormat.YELLOW + "%multiplayer.player.left", this.getDisplayName());
     }
@@ -1797,6 +1803,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                     }
 
                     String message;
+                    this.protocol = loginPacket.getProtocol();
                     if (loginPacket.getProtocol() != ProtocolInfo.CURRENT_PROTOCOL && !Arrays.asList(ProtocolInfo.ACCEPTED_PROTOCOLS).contains(loginPacket.getProtocol())) {
                         if (loginPacket.getProtocol() < ProtocolInfo.CURRENT_PROTOCOL) {
                             message = "disconnectionScreen.outdatedClient";

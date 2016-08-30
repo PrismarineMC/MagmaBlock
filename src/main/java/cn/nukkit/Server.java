@@ -51,6 +51,7 @@ import cn.nukkit.network.SourceInterface;
 import cn.nukkit.network.protocol.BatchPacket;
 import cn.nukkit.network.protocol.CraftingDataPacket;
 import cn.nukkit.network.protocol.DataPacket;
+import cn.nukkit.network.protocol.NewBatchPacket;
 import cn.nukkit.network.protocol.PlayerListPacket;
 import cn.nukkit.network.query.QueryHandler;
 import cn.nukkit.network.rcon.RCON;
@@ -639,7 +640,15 @@ public class Server {
 
         for (String i : identifiers) {
             if (this.players.containsKey(i)) {
-                this.players.get(i).dataPacket(pk);
+                if(this.players.get(i).getProtocol() >= 90){
+                    NewBatchPacket packet = new NewBatchPacket();
+                    packet.payload = data;
+                    packet.encode();
+                    packet.isEncoded = true;
+                    this.players.get(i).dataPacket(packet);
+                } else {
+                    this.players.get(i).dataPacket(pk);
+                }
             }
         }
     }
