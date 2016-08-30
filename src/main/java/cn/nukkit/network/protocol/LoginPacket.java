@@ -41,6 +41,8 @@ public class LoginPacket extends DataPacket {
         try {
             switch(this.protocol){
                 case 81:
+                    str = Zlib.inflate(this.get(this.getInt()), 1024 * 1024 * 64);
+                    break;
                 case 82:
                     str = Zlib.inflate(this.get(this.getInt()), 1024 * 1024 * 64);
                     break;
