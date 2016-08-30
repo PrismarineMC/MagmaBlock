@@ -2635,13 +2635,25 @@ public class Level implements ChunkManager, Metadatable {
             be.close();
         }
 
-        for (String index : this.chunks.keySet()) {
+        for (Map.Entry<String, BaseFullChunk> entry : this.chunks.entrySet()) {
+
+            String index = entry.getKey();
+            BaseFullChunk chunk = entry.getValue();
 
             if (!this.unloadQueue.containsKey(index)) {
                 Chunk.Entry chunkEntry = Level.getChunkXZ(index);
                 int X = chunkEntry.chunkX;
                 int Z = chunkEntry.chunkZ;
                 if (!this.isSpawnChunk(X, Z)) {
+                    this.unloadChunkRequest(X, Z, true);
+                }
+                boolean notUsing = true;
+                for (ChunkLoader chunkLoader : this.chunkLoaders.get(index).values()) {
+                    if (chunkLoader.isChunkLoaded(chunk) || chunkLoader.isChunkLoading(chunk)) {
+                        notUsing = false;
+                    }
+                }
+                if (notUsing) {
                     this.unloadChunkRequest(X, Z, true);
                 }
             }

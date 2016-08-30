@@ -21,6 +21,10 @@ public interface ChunkLoader {
 
     Level getLevel();
 
+    boolean isChunkLoaded(FullChunk chunk);
+
+    boolean isChunkLoading(FullChunk chunk);
+
     void onChunkChanged(FullChunk chunk);
 
     void onChunkLoaded(FullChunk chunk);

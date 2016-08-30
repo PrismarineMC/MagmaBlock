@@ -756,6 +756,18 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.getFoodData().sendFoodLevel();
     }
 
+    @Override
+    public boolean isChunkLoaded(FullChunk chunk){
+        String index = Level.chunkHash(chunk.getX(), chunk.getZ());
+        return this.usedChunks.containsKey(index);
+    }
+
+    @Override
+    public boolean isChunkLoading(FullChunk chunk){
+        String index = Level.chunkHash(chunk.getX(), chunk.getZ());
+        return this.loadQueue.containsKey(index);
+    }
+
     public void loadChunk(int x, int z) {
         this.loadChunk(x, z, null);
     }
