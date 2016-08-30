@@ -2648,9 +2648,11 @@ public class Level implements ChunkManager, Metadatable {
                     this.unloadChunkRequest(X, Z, true);
                 }
                 boolean notUsing = true;
-                for (ChunkLoader chunkLoader : this.chunkLoaders.get(index).values()) {
-                    if (chunkLoader.isChunkLoaded(chunk) || chunkLoader.isChunkLoading(chunk)) {
-                        notUsing = false;
+                if(this.chunkLoaders.containsKey(index)){
+                    for (ChunkLoader chunkLoader : this.chunkLoaders.get(index).values()) {
+                        if (chunkLoader.isChunkLoaded(chunk) || chunkLoader.isChunkLoading(chunk)) {
+                            notUsing = false;
+                        }
                     }
                 }
                 if (notUsing) {
