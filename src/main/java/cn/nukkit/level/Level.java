@@ -50,7 +50,7 @@ import cn.nukkit.timings.TimingsHistory;
 import cn.nukkit.utils.*;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.*;
 
 /**
  * author: MagicDroidX Nukkit Project
@@ -2681,7 +2681,7 @@ public class Level implements ChunkManager, Metadatable {
             int maxUnload = 96;
             long now = System.currentTimeMillis();
 
-            for (Iterator<String> it = new ArrayList<>(this.unloadQueue.keySet()).iterator(); it.hasNext(); ) {
+            for (Iterator<String> it = new ArrayList<>(new ConcurrentHashMap<>(this.unloadQueue).keySet()).iterator(); it.hasNext(); ) {
                 String index = it.next();
                 long time = this.unloadQueue.get(index);
 
