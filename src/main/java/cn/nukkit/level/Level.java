@@ -2681,7 +2681,8 @@ public class Level implements ChunkManager, Metadatable {
             int maxUnload = 96;
             long now = System.currentTimeMillis();
 
-            for (String index : new ArrayList<>(this.unloadQueue.keySet())) {
+            for (Iterator<String> it = new ArrayList<>(this.unloadQueue.keySet()).iterator(); it.hasNext(); ) {
+                String index = it.next();
                 long time = this.unloadQueue.get(index);
 
                 Chunk.Entry chunkEntry = Level.getChunkXZ(index);
