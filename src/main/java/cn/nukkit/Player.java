@@ -577,7 +577,11 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         this.usedChunks.put(Level.chunkHash(x, z), true);
         this.chunkLoadCount++;
 
-        this.dataPacket(packet);
+        if(packet instanceof BatchPacket){
+            this.dataPacket(packet);
+        } else {
+            this.batchDataPacket(packet);
+        }
 
         if (this.spawned) {
             for (Entity entity : this.level.getChunkEntities(x, z).values()) {
