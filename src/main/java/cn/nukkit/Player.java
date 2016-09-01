@@ -3849,10 +3849,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             this.newPosition = null;
 
             this.loadChunk((int) to.x >> 4, (int) to.z >> 4);
-            this.loadChunk(((int) to.x >> 4) - 1, (int) to.z >> 4); //Load near chunks
-            this.loadChunk(((int) to.x >> 4) + 1, (int) to.z >> 4);
-            this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) - 1);
-            this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) + 1);
+            if(cause != null){ //fix long chunk loading on join
+                this.loadChunk(((int) to.x >> 4) - 1, (int) to.z >> 4); //Load near chunks
+                this.loadChunk(((int) to.x >> 4) + 1, (int) to.z >> 4);
+                this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) - 1);
+                this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) + 1);
+            }
 
             //Weather
             this.getLevel().sendWeather(this);
