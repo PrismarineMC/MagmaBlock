@@ -24,7 +24,7 @@ network:
  #バッチパケットを送信するときのzlibの圧縮レベルですす。 値を大きくするとcpuに多く負荷かけ、低くすると通信量が増えます。
  compression-level: 7
  #AsyncTasksを圧縮に使います. 0.5か1tick(1tick=0.05秒)遅れ、メインスレッドCPU負荷を減らします。
- async-compression: false
+ async-compression: true
 
 debug:
  #1より大きいと、コンソールにデバッグメッセージが表示されます

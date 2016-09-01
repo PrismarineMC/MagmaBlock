@@ -24,7 +24,7 @@ network:
  #Nível de compressão usado pelo Zlib ao enviar packets compactados. Maior = mais uso na CPU, menos bandwidth utilizado.
  compression-level: 7
  #Usar AsyncTasks para a compressão. Adiciona metade de um/um tick de delay, menos uso na CPU na thread principal.
- async-compression: false
+ async-compression: true
 
 debug:
  #Se maior de 1, as mensagens para debug irão ser mostradas no console

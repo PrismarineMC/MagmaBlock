@@ -24,7 +24,7 @@ network:
  # 배치 패킷을 전송할 때 Zlib에 사용되는 압축 레벨 입니다. 높은 값 = 더 많은 CPU 사용량, 적은 대역폭을 사용합니다.
  compression-level: 7
  # 압축할 때 AsyncTasks를 사용합니다. 0.5틱/1틱 딜레이를 추가합니다. 메인 쓰레드에 더 적은 CPU를 사용합니다.
- async-compression: false
+ async-compression: true
 
 debug:
  # 설정값이 1보다 크면, 콘솔 메시지에 디버그 메시지를 표시합니다.

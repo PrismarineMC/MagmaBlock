@@ -23,7 +23,7 @@ network:
  #壓縮等級，等級越高，CPU佔用越高，佔用頻寬越少
  compression-level: 7
  #非同步壓縮，緩解主線程CPU負載
- async-compression: false
+ async-compression: true
 
 debug:
  #當調試級別 > 1 時，將在控制台顯示調試資訊

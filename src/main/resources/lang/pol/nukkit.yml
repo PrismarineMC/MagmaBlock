@@ -24,7 +24,7 @@ network:
  #Compression level used of Zlib when sending batched packets. Higher = more CPU, less bandwidth usage
  compression-level: 7
  #Use AsyncTasks for compression. Adds half/one tick delay, less CPU load on main thread
- async-compression: false
+ async-compression: true
 
 debug:
  #If > 1, it will show debug messages in the console

@@ -24,7 +24,7 @@ network:
  #Nivel de compresion usada para el envió de paquetes. Alta = más CPU, menos banda ancha
  compression-level: 7
  #Usar AsyncTasks para comprimir. Añade un retraso de medio tick, reduce el consumo de CPU
- async-compression: false
+ async-compression: true
 
 debug:
  #Si es mayor que 1, mostrara mensajes de depuración en la consola
