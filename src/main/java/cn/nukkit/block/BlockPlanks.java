@@ -58,6 +58,8 @@ public class BlockPlanks extends BlockSolid {
                 "Jungle Wood Planks",
                 "Acacia Wood Planks",
                 "Dark Oak Wood Planks",
+                "Unknown Planks",
+                "Unknown Planks"
         };
 
         return names[this.meta & 0x07];

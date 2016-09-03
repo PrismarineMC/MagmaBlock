@@ -1401,11 +1401,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
         }
 
         this.loadChunk((int) this.x >> 4, (int) this.z >> 4);
-        /*this.loadChunk(((int) this.x >> 4) - 1, (int) this.z >> 4); //Load near chunks(no, it makes lags)
-        this.loadChunk(((int) this.x >> 4) + 1, (int) this.z >> 4);
-        this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) - 1);
-        this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) + 1);*/
-
+        if(this.lastUpdate % 30 == 0){
+            this.loadChunk(((int) this.x >> 4) - 1, (int) this.z >> 4); //Load near chunks(no, it makes lags)
+            this.loadChunk(((int) this.x >> 4) + 1, (int) this.z >> 4);
+            this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) - 1);
+            this.loadChunk((int) this.x >> 4, ((int) this.z >> 4) + 1);
+        }
         this.newPosition = null;
     }
 
@@ -3834,12 +3835,12 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
             this.newPosition = null;
 
             this.loadChunk((int) to.x >> 4, (int) to.z >> 4);
-/*            if(cause != null){ //fix long chunk loading on join
-                this.loadChunk(((int) to.x >> 4) - 1, (int) to.z >> 4); //Load near chunks(lags)
+            if(cause != null && this.lastUpdate % 30 == 0){ //fix long chunk loading on join
+                this.loadChunk(((int) to.x >> 4) - 1, (int) to.z >> 4); //Load near chunks
                 this.loadChunk(((int) to.x >> 4) + 1, (int) to.z >> 4);
                 this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) - 1);
                 this.loadChunk((int) to.x >> 4, ((int) to.z >> 4) + 1);
-            }*/
+            }
 
             //Weather
             this.getLevel().sendWeather(this);
