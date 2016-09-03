@@ -9,6 +9,7 @@ import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.Player;
 
 import java.util.Random;
 
@@ -59,7 +60,7 @@ public abstract class EntityProjectile extends Entity {
 
     @Override
     public boolean canCollideWith(Entity entity) {
-        return entity instanceof EntityLiving && !this.onGround && (entity instanceof Player ? !entity.isSpectator() : true);
+        return entity instanceof EntityLiving && !this.onGround && (entity instanceof Player ? !((Player)entity).isSpectator() : true);
     }
 
     @Override
