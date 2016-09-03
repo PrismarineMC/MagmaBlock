@@ -1754,6 +1754,8 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
 
         this.forceMovement = this.teleportPosition = this.getPosition();
 
+        this.initEntity();
+
         this.server.onPlayerLogin(this);
     }
 
