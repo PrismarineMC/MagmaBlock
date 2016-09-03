@@ -434,6 +434,18 @@ public class SynapsePlayer extends Player {
         }
     }
 
+    public boolean transferDesc(String desc) { 
+        String hash = SynapseAPI.getInstance().getClientHashByDescription(desc); 
+        if (hash == null) { 
+            return false; 
+        } 
+        if (desc.equals(SynapseAPI.getInstance().getServerDescription())) { 
+            return false; 
+        } 
+        transfer(hash); 
+        return true; 
+    }
+
     @Override
     public void handleDataPacket(DataPacket packet){
         if (!this.isSynapseLogin) {      
