@@ -59,7 +59,7 @@ public abstract class EntityProjectile extends Entity {
 
     @Override
     public boolean canCollideWith(Entity entity) {
-        return entity instanceof EntityLiving && !this.onGround;
+        return entity instanceof EntityLiving && !this.onGround && (entity instanceof Player ? !entity.isSpectator() : true);
     }
 
     @Override
