@@ -115,7 +115,7 @@ public class Level implements ChunkManager, Metadatable {
 
     private Map<String, List<DataPacket>> chunkPackets = new HashMap<>();
 
-    private final Map<String, Long> unloadQueue = new HashMap<>();
+    private final Map<String, Long> unloadQueue = new ConcurrentHashMap<>();
 
     private float time;
     public boolean stopTime;
@@ -2681,7 +2681,7 @@ public class Level implements ChunkManager, Metadatable {
             int maxUnload = 96;
             long now = System.currentTimeMillis();
 
-            for (Iterator<String> it = new ArrayList<>(new ConcurrentHashMap<>(this.unloadQueue).keySet()).iterator(); it.hasNext(); ) {
+            for (Iterator<String> it = new ArrayList<>(this.unloadQueue.keySet()).iterator(); it.hasNext(); ) {
                 String index = it.next();
                 long time = this.unloadQueue.get(index);
 
