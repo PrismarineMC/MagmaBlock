@@ -239,7 +239,7 @@ public class EntityHuman extends EntityCreature implements InventoryHolder {
     @Override
     public void close() {
         if (!this.closed) {
-            if (!(this instanceof Player) || ((Player) this).loggedIn) {
+            if ((!(this instanceof Player) || ((Player) this).loggedIn) && this.inventory != null) {
                 for (Player viewer : this.inventory.getViewers()) {
                     viewer.removeWindow(this.inventory);
                 }
