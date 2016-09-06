@@ -46,7 +46,7 @@ public class SynapseSocket {
             this.socket = SocketChannel.open(isa);
             this.socket.configureBlocking(false);
             this.socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE | SelectionKey.OP_CONNECT);
-            this.logger.info("Synapse has connected to " + this.interfaz + ":" + this.port);
+            this.logger.notice("SynapseAPI has connected to " + this.interfaz + ":" + this.port);
             this.connected = true;
         } catch (IOException e) {
             this.logger.critical("Synapse Client can't connect " + this.interfaz + ":" + this.port);
