@@ -1,6 +1,6 @@
 package org.itxtech.synapseapi.network;
 
-import org.itxtech.synapseapi.SynapseAPI;
+import org.itxtech.synapseapi.SynapseEntry;
 import org.itxtech.synapseapi.network.protocol.spp.*;
 import org.itxtech.synapseapi.network.synlib.SynapseClient;
 
@@ -12,18 +12,18 @@ import java.util.Map;
  */
 public class SynapseInterface {
 
-    private SynapseAPI synapse;
+    private SynapseEntry synapse;
     private SynapseClient client;
     private Map<Byte, SynapseDataPacket> packetPool = new HashMap<>();
     private boolean connected = true;
 
-    public SynapseInterface(SynapseAPI server, String ip, int port){
+    public SynapseInterface(SynapseEntry server, String ip, int port){
         this.synapse = server;
         this.registerPackets();
-        this.client = new SynapseClient(server.getServer().getLogger(), port, ip);
+        this.client = new SynapseClient(server.getPlugin().getServer().getLogger(), port, ip);
     }
 
-    public SynapseAPI getSynapse() {
+    public SynapseEntry getSynapse() {
         return synapse;
     }
 
@@ -95,5 +95,6 @@ public class SynapseInterface {
         this.registerPacket(SynapseInfo.INFORMATION_PACKET, new InformationPacket());
         this.registerPacket(SynapseInfo.TRANSFER_PACKET, new TransferPacket());
         this.registerPacket(SynapseInfo.BROADCAST_PACKET, new BroadcastPacket());
+        this.registerPacket(SynapseInfo.FAST_PLAYER_LIST_PACKET, new FastPlayerListPacket());
     }
 }
