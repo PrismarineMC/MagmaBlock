@@ -85,15 +85,10 @@ public class Session {
     private void tick() throws Exception {
         if (this.update()) {
             this.receivePacket();
-            int sendLen = 0;
-            do {
-                int len = this.sendPacket();
-                if (len > 0) {
-                    sendLen += len;
-                } else {
-                    break;
-                }
-            } while (sendLen < 65535);
+            int max = 5000;
+            while (max > 0 && this.sendPacket()){
+                max--;
+            }
         }
     }
 
@@ -106,13 +101,13 @@ public class Session {
         }
     }
 
-    private int sendPacket() throws Exception {
+    private boolean sendPacket() throws Exception {
         byte[] packet = this.server.readMainToThreadPacket();
         if (packet != null && packet.length > 0) {
             this.writePacket(packet);
-            return packet.length;
+            return true;
         }
-        return -1;
+        return false;
     }
 
     public String getHash() {
